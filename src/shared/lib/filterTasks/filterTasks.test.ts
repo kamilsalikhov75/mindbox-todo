@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import { filterTasks } from "./filterTasks";
-import { ITask, TaskStatus } from "../../../entities";
+import { ITask, TaskFilter, TaskStatus } from "../../../entities";
 
 const tasks: ITask[] = [
   {
@@ -71,15 +71,15 @@ const completedTasks: ITask[] = [
 ];
 
 test("filter active tasks", () => {
-  expect(filterTasks(tasks, TaskStatus.Active)).toEqual(activeTasks);
+  expect(filterTasks(tasks, TaskFilter.Active)).toEqual(activeTasks);
 });
 
 test("filter completed tasks", () => {
-  expect(filterTasks(tasks, TaskStatus.Completed)).toEqual(completedTasks);
+  expect(filterTasks(tasks, TaskFilter.Completed)).toEqual(completedTasks);
 });
 
 test("filter empty array", () => {
-  expect(filterTasks([], TaskStatus.Active)).toEqual([]);
-  expect(filterTasks([], TaskStatus.Completed)).toEqual([]);
+  expect(filterTasks([], TaskFilter.Active)).toEqual([]);
+  expect(filterTasks([], TaskFilter.Completed)).toEqual([]);
 });
 
